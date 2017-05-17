@@ -29,7 +29,7 @@ public class BaseTest {
     @Parameters({"browser"})
     public void setUp(String browser) {
        driver = DriverMaster.getDriver(browser);
-       driver.manage().window().fullscreen();
+       driver.manage().window().maximize();
     }
 
 
