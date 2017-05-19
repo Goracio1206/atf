@@ -1,5 +1,6 @@
 package Web.WebPages;
 
+import Core.Environment;
 import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class AdminPage extends WebPage<AdminPage> {
 
-    private static final String ADMIN_PAGE = "http://localhost/snews/administration/";
+    private static final String ADMIN_PAGE = new Environment().BASE_URL + "/snews/administration/";
 
     public AdminPage(WebDriver driver) {
         super(driver);

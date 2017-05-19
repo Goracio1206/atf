@@ -7,29 +7,32 @@ import org.testng.annotations.Parameters;
 
 /**
  * This class contains all procedures which will be executed before and after each suite.
- * @vatriables driver need to set the driver according to value which will be entered from outside.
  *
  * @author Admin
- * @since 13.05.2017
- * @locale Ukraine, Lviv
  * @version 0.1
+ * @vatriables driver need to set the driver according to value which will be entered from outside.
+ * @locale Ukraine, Lviv
+ * @since 13.05.2017
  */
 public class BaseTest {
 
     protected WebDriver driver;
 
+
     /**
      * This Method will set the browser driver returned from DriverMaster to execute all next test cases on this browser.
      * And set the browser to full screen.
-     * @param browser - will be transmitted through parameter from maven run commend.
      *
-     * Annotation Parameters identify which parameter will be taken from run configuration.
+     * @param browser - will be transmitted through parameter from maven run commend.
+     *                <p>
+     *                Annotation Parameters identify which parameter will be taken from run configuration.
      */
     @BeforeSuite(alwaysRun = true)
-    @Parameters({"browser"})
-    public void setUp(String browser) {
-       driver = DriverMaster.getDriver(browser);
-       driver.manage().window().maximize();
+    @Parameters({"browser", "baseurl"})
+    public void setUp(String browser, String baseURL) {
+        new Environment().setEnvironment(baseURL);
+        driver = DriverMaster.getDriver(browser);
+        driver.manage().window().maximize();
     }
 
 

@@ -1,17 +1,20 @@
 package Web.WebPages;
 
+import Core.BaseTest;
+import Core.Environment;
 import Web.WebElements.Link;
 import Web.WebElements.Text;
 import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+
 /**
  * Created by Admin on 15-May-17.
  */
 public class MainPage extends WebPage<MainPage> {
 
-    private static final String MAIN_PAGE = "http://localhost/snews/";
+    private static final String MAIN_PAGE = new Environment().BASE_URL + "/snews/";
 
     public MainPage(WebDriver driver) {
         super(driver);
