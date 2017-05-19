@@ -28,9 +28,9 @@ public class BaseTest {
      *                Annotation Parameters identify which parameter will be taken from run configuration.
      */
     @BeforeSuite(alwaysRun = true)
-    @Parameters({"browser", "baseurl"})
-    public void setUp(String browser, String baseURL) {
-        new Environment().setEnvironment(baseURL);
+    @Parameters({"browser"})
+    public void setUp(String browser) {
+        //new Environment().setEnvironment(baseURL);
         driver = DriverMaster.getDriver(browser);
         driver.manage().window().maximize();
     }
