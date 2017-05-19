@@ -8,6 +8,11 @@
     <artifactId>atf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>atf</name>
+    <description>This ddis atf framework</description>
+    <properties>
+            <jre.level>1.8</jre.level>
+            <jdk.level>1.8</jdk.level>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -60,7 +65,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <browser>${browser}</browser>
-                        <baseurl>${baseurl}</baseurl>
+                       <!-- <baseurl>${baseurl}</baseurl>-->
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
