@@ -2,9 +2,7 @@ package Web;
 
 import org.openqa.selenium.WebDriver;
 
-/**
- * Created by Admin on 10-May-17.
- */
+
 public abstract class Component<T extends Component<T>> {
 
     protected WebDriver driver;

@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class MainPage extends WebPage<MainPage> {
 
-    private static final String MAIN_PAGE = new Environment().BASE_URL + "/snews/";
+    private static final String MAIN_PAGE = "http://localhost/snews/";
 
     public MainPage(WebDriver driver) {
         super(driver);
