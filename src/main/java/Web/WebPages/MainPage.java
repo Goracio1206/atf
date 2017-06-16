@@ -16,6 +16,7 @@ public class MainPage extends WebPage<MainPage> {
 
     private static final String MAIN_PAGE = "http://localhost/snews/";
 
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -36,6 +37,8 @@ public class MainPage extends WebPage<MainPage> {
         return new LoginPage(driver).waitUntilAvailable();
     }
 
-
+    public String getUserName(){
+        return driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]")).getText();
+    }
 
 }

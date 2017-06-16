@@ -13,4 +13,8 @@ public class TestData {
     public static final String ADMIN_USER_NAME = "test";
     public static final String ADMIN_USER_PASS = "test";
 
+
+    // Admin Page
+        // Add New Topic
+    public static final String ADMIN_ADD_NEW_TOPIC_CATEGORY_UNCATEGORIZED = "Uncategorized";
 }

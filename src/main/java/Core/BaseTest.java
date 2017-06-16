@@ -1,9 +1,7 @@
 package Core;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 /**
  * This class contains all procedures which will be executed before and after each suite.
@@ -27,7 +25,7 @@ public class BaseTest {
      *                <p>
      *                Annotation Parameters identify which parameter will be taken from run configuration.
      */
-    @BeforeSuite(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
     public void setUp(String browser) {
         //new Environment().setEnvironment(baseURL);
@@ -39,7 +37,7 @@ public class BaseTest {
     /**
      * This will be executed after all suite to close the browser execution end.
      */
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }

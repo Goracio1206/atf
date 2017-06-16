@@ -32,12 +32,13 @@ public class LoginPage extends WebPage<LoginPage> {
                 getLoginButton().waitUntilAvailable().isAvailable();
     }
 
-    public void loginAs(String username, String password) {
+    public AdminPage loginAs(String username, String password) {
         getUsernameInput().inputText(username);
         getPasswordInput().inputText(password);
         String capcha = Capchainput();
         getCapchaInput().inputText(capcha);
         getLoginButton().click();
+        return new AdminPage(driver);
     }
 
     private TextInput getUsernameInput() {
