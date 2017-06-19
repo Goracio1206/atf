@@ -37,6 +37,9 @@ public class MainPage extends WebPage<MainPage> {
         return new LoginPage(driver).waitUntilAvailable();
     }
 
+    public MainPage goToHomePage(){
+        return new MainPage(driver).load();
+    }
     public String getUserName(){
         return driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]")).getText();
     }

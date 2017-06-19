@@ -18,7 +18,7 @@ import static Core.TestData.ADMIN_USER_PASS;
 
 public class RegressionTest extends BaseTest {
 
-    @Test(alwaysRun = true)
+   /* @Test(alwaysRun = true)
     public void SimpleLoginAndLogOut1() {
         AdminPage adminPage = new MainPage(driver).loadAnsWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
         //Verify that user logger in
@@ -31,7 +31,7 @@ public class RegressionTest extends BaseTest {
         } catch (Exception e) {
         }
 
-    }
+    }*/
 
     @Test(alwaysRun = true)
     public void addNewTopic() {
@@ -40,6 +40,10 @@ public class RegressionTest extends BaseTest {
                 "Vitalii1",
                 "kjdgfbjkdsbgkjsdbkgjbfdjgblfdsklgkjsldbjknvjksdfnjnfuihadsjkfadklf",
                 ADMIN_ADD_NEW_TOPIC_CATEGORY_UNCATEGORIZED);
+        new MainPage(driver).goToLoginPage();
+        try{
+            Thread.sleep(5000);
+        } catch (Exception e){}
         new MainMenu(driver).logOut();
 
     }

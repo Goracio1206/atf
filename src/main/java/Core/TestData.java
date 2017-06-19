@@ -17,4 +17,5 @@ public class TestData {
     // Admin Page
         // Add New Topic
     public static final String ADMIN_ADD_NEW_TOPIC_CATEGORY_UNCATEGORIZED = "Uncategorized";
+    public static final String ADMIN_ADD_NEW_TOPIC_TITLE_EXIST = "The Title cannot be empty.";
 }
