@@ -1,5 +1,6 @@
 package Core;
 
+import Web.WebPages.MainMenu;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
@@ -32,6 +33,12 @@ public class BaseTest {
         driver = DriverMaster.getDriver(browser);
         driver.manage().window().maximize();
     }
+
+
+//    @AfterTest(alwaysRun = true)
+//    public void logout(){
+//        new MainMenu(driver).logOut();
+//    }
 
 
     /**

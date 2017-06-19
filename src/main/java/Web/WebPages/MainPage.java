@@ -40,6 +40,19 @@ public class MainPage extends WebPage<MainPage> {
     public MainPage goToHomePage(){
         return new MainPage(driver).load();
     }
+
+    public String getFirstTopic(){
+        String topic = null;
+        topic = driver.findElement(By.xpath(".//*[@id='main']/h2[1]/a")).getText();
+        return topic;
+    }
+
+    public String getLatestNewTopic(){
+        String topicTitle = null;
+        topicTitle = driver.findElement(By.xpath(".//*[@id='side']/div[2]/ul[1]/li[1]/a")).getText();
+        return topicTitle;
+    }
+
     public String getUserName(){
         return driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]")).getText();
     }
