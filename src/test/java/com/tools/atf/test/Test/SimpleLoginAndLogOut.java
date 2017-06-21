@@ -17,8 +17,8 @@ import static org.hamcrest.Matchers.is;
 public class SimpleLoginAndLogOut extends BaseTest {
 
     @Test(alwaysRun = true)
-    public void SimpleLoginAndLogOut1() {
-        new AdminPage(driver).waitUntilAvailable();
+    public void SimpleLoginAndLogOut() {
+        new MainPage(driver).loadAnsWaitUntilAvailable();
         AdminPage adminPage = new MainPage(driver).loadAnsWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
         //Verify that user logger in
         assertThat("Admin", is(new MainPage(driver).getUserName()));

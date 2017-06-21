@@ -28,8 +28,8 @@ public class MainPage extends WebPage<MainPage> {
       @Override
     public boolean isAvailable() {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
-                new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable() &&
-                new Link(driver, By.xpath(".//*[@id='footer']/p/a[2]")).waitUntilAvailable().isAvailable();
+                new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable() /*&&
+                new Link(driver, By.xpath("./*//*[@id='footer']/p/a[2]")).waitUntilAvailable().isAvailable()*/;
     }
 
     public LoginPage goToLoginPage() {
