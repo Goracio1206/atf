@@ -1,7 +1,5 @@
 package Web.WebPages;
 
-import Core.BaseTest;
-import Core.Environment;
 import Web.WebElements.Link;
 import Web.WebElements.Text;
 import Web.WebPage;
@@ -27,33 +25,35 @@ public class MainPage extends WebPage<MainPage> {
         return this;
     }
 
-    @Override
+      @Override
     public boolean isAvailable() {
-       return new MainMenu(driver).waitUntilAvailable().isAvailable() && new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable();
+        return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
+                new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable() &&
+                new Link(driver, By.xpath(".//*[@id='footer']/p/a[2]")).waitUntilAvailable().isAvailable();
     }
 
-    public LoginPage goToLoginPage(){
-        new Link(driver, By.xpath("//*[@id='footer']/p/a[2]")).click();
+    public LoginPage goToLoginPage() {
+        new Link(driver, By.xpath(".//*[@id='footer']/p/a[2]")).click();
         return new LoginPage(driver).waitUntilAvailable();
     }
 
-    public MainPage goToHomePage(){
+    public MainPage goToHomePage() {
         return new MainPage(driver).load();
     }
 
-    public String getFirstTopic(){
+    public String getFirstTopic() {
         String topic = null;
         topic = driver.findElement(By.xpath(".//*[@id='main']/h2[1]/a")).getText();
         return topic;
     }
 
-    public String getLatestNewTopic(){
+    public String getLatestNewTopic() {
         String topicTitle = null;
         topicTitle = driver.findElement(By.xpath(".//*[@id='side']/div[2]/ul[1]/li[1]/a")).getText();
         return topicTitle;
     }
 
-    public String getUserName(){
+    public String getUserName() {
         return driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]")).getText();
     }
 

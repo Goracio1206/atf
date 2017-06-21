@@ -18,4 +18,7 @@ public class TestData {
         // Add New Topic
     public static final String ADMIN_ADD_NEW_TOPIC_CATEGORY_UNCATEGORIZED = "Uncategorized";
     public static final String ADMIN_ADD_NEW_TOPIC_TITLE_EXIST = "The Title cannot be empty.";
+
+    /*MAIN PAGE*/
+    public static final String CATEGORIES_SECTION = ".//*[@id='side']/div[1]/ul[1]/li";
 }

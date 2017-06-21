@@ -51,7 +51,6 @@ public class LoginPage extends WebPage<LoginPage> {
     }
 
     private TextInput getCapchaInput() {
-       /* driver.findElement(By.id("calc")).clear();*/
         return new TextInput(driver, By.id("calc"));
     }
 

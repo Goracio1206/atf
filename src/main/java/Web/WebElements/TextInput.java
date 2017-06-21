@@ -9,7 +9,7 @@ public class TextInput extends WebComponent<TextInput> {
 
     public TextInput(WebDriver driver, By findByMethod) {
         super(driver, findByMethod);
-        driver.findElement(findByMethod);
+        driver.findElement(findByMethod).clear();
     }
 
     public TextInput inputText(String text) {

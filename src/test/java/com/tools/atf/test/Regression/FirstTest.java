@@ -1,4 +1,4 @@
-package com.tools.atf.test;
+package com.tools.atf.test.Regression;
 
 import Core.BaseTest;
 import Web.WebPages.AdminPage;
