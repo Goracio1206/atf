@@ -19,16 +19,10 @@ public class SimpleLoginAndLogOut extends BaseTest {
     @Test(alwaysRun = true)
     public void SimpleLoginAndLogOut() {
         new MainPage(driver).loadAnsWaitUntilAvailable();
-        AdminPage adminPage = new MainPage(driver).loadAnsWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
-        //Verify that user logger in
+        new MainPage(driver).loadAnsWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
+        //Verify that user logged in
         assertThat("Admin", is(new MainPage(driver).getUserName()));
         new AdminPage(driver).waitUntilAvailable();
         new MainMenu(driver).waitUntilAvailable().logOut();
-        System.out.println("Log out performed");
-        try {
-            Thread.sleep(10000);
-        } catch (Exception e) {
-        }
-
     }
 }
