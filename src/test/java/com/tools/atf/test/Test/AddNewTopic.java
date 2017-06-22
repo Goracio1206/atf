@@ -2,8 +2,8 @@ package com.tools.atf.test.Test;
 
 import Core.BaseTest;
 import Web.WebPages.AdminPage;
+import Web.WebPages.HomePage;
 import Web.WebPages.MainMenu;
-import Web.WebPages.MainPage;
 import org.testng.annotations.Test;
 
 import static Core.TestData.ADMIN_ADD_NEW_TOPIC_CATEGORY_UNCATEGORIZED;
@@ -18,17 +18,15 @@ public class AddNewTopic extends BaseTest {
 
     @Test(alwaysRun = true)
     public void addNewTopic() {
-        new MainPage(driver).loadAnsWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
+        new HomePage(driver).loadAndWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
         new AdminPage(driver).waitUntilAvailable().addNewArticleOnHomePage(
                 "Vitalii1",
                 "kjdgfbjkdsbgkjsdbkgjbfdjgblfdsklgkjsldbjknvjksdfnjnfuihadsjkfadklf",
                 ADMIN_ADD_NEW_TOPIC_CATEGORY_UNCATEGORIZED);
-        new MainPage(driver).goToHomePage();
-        assertThat("Topics are the same", new MainPage(driver).getLatestNewTopic().contains(new MainPage(driver).getFirstTopic()));
-        try {
-            Thread.sleep(5000);
-        } catch (Exception e) {
-        }
+        new HomePage(driver).goToHomePage();
+        // Validate that new Topic present in the home page and the same topic is in the New Posts section in the first position.
+        assertThat("Topics are the same", new HomePage(driver).getLatestNewTopic().contains(new HomePage(driver).getFirstTopic()));
+
         new MainMenu(driver).logOut();
     }
 }

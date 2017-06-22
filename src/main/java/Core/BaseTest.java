@@ -1,13 +1,11 @@
 package Core;
 
-import Web.WebElements.Link;
 import Web.WebPages.MainMenu;
-import Web.WebPages.MainPage;
+import Web.WebPages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
-import sun.awt.windows.ThemeReader;
 
 /**
  * This class contains all procedures which will be executed before and after each suite.
@@ -42,7 +40,7 @@ public class BaseTest {
 
 //    @AfterTest(alwaysRun = true)
 //    public void logout(){
-//        new MainPage(driver).loadAnsWaitUntilAvailable();
+//        new HomePage(driver).loadAndWaitUntilAvailable();
 //        WebElement element = driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]"));
 //        if (!element.getText().equals("Login")){
 //            new MainMenu(driver).logOut();
@@ -55,7 +53,7 @@ public class BaseTest {
      */
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        new MainPage(driver).loadAnsWaitUntilAvailable();
+        new HomePage(driver).loadAndWaitUntilAvailable();
         WebElement element = driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]"));
         if (!element.getText().equals("Login")){
             new MainMenu(driver).logOut();

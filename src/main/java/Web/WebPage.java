@@ -11,7 +11,7 @@ public abstract class WebPage<T extends WebPage<T>> extends Component<T> {
 
     public abstract T load();
 
-    public T loadAnsWaitUntilAvailable(){
+    public T loadAndWaitUntilAvailable(){
         load();
         return waitUntilAvailable();
     }

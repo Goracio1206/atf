@@ -10,17 +10,17 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Admin on 15-May-17.
  */
-public class MainPage extends WebPage<MainPage> {
+public class HomePage extends WebPage<HomePage> {
 
     private static final String MAIN_PAGE = "http://localhost/snews/";
 
 
-    public MainPage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public MainPage load() {
+    public HomePage load() {
         driver.get(MAIN_PAGE);
         return this;
     }
@@ -28,8 +28,8 @@ public class MainPage extends WebPage<MainPage> {
       @Override
     public boolean isAvailable() {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
-                new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable() /*&&
-                new Link(driver, By.xpath("./*//*[@id='footer']/p/a[2]")).waitUntilAvailable().isAvailable()*/;
+                new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable();
+
     }
 
     public LoginPage goToLoginPage() {
@@ -37,8 +37,8 @@ public class MainPage extends WebPage<MainPage> {
         return new LoginPage(driver).waitUntilAvailable();
     }
 
-    public MainPage goToHomePage() {
-        return new MainPage(driver).load();
+    public HomePage goToHomePage() {
+        return new HomePage(driver).load();
     }
 
     public String getFirstTopic() {
