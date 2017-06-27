@@ -15,7 +15,7 @@ public class Button extends WebComponent<Button> {
     }
 
     public Button(WebDriver driver, By findByMthod) {
-        super();
+        super(driver, findByMthod);
 
     }
 
