@@ -13,9 +13,14 @@ public class DropDown extends WebComponent<DropDown> {
 
     WebElement element = null;
 
-    public DropDown(WebDriver driver, By findByMethod) {
+    public DropDown(WebDriver driver, WebElement element) {
+        super(driver, element);
+        this.element = element;
+    }
+
+    public DropDown(WebDriver driver, By findByMethod){
         super(driver, findByMethod);
-        element = driver.findElement(findByMethod);
+        this.element = driver.findElement(findByMethod);
     }
 
     public void selectByVisibleText(String text){

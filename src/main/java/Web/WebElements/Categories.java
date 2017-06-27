@@ -1,10 +1,11 @@
-package Web.WebPages;
+package Web.WebElements;
 
 import Web.WebComponent;
-import Web.WebElements.ComponentList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,13 +15,14 @@ import java.util.Map;
  * Created by Admin on 19-Jun-17.
  */
 public class Categories extends WebComponent<Categories> {
-
+    //TODO: Need to add xPath for Category List
+    @FindBy(xpath = "")
     public List<WebElement> categoriesItems;
     public Map<String, Integer> topicPerCategory = new HashMap<String, Integer>();
 
     public Categories(WebDriver driver, By findByMethod) {
         super(driver, findByMethod);
-        categoriesItems = new ComponentList(driver, findByMethod).getComponentList();
+        PageFactory.initElements(driver, this);
         this.setTopicPerCategory();
     }
 
@@ -34,13 +36,9 @@ public class Categories extends WebComponent<Categories> {
     }
 
     private void setTopicPerCategory() {
-        String categoryName;
-        Integer topicsNumber;
         for (WebElement element : categoriesItems) {
             String[] mass = new String[3];
             mass = element.getText().split("[()]");
-            categoryName = mass[0];
-            topicsNumber = Integer.valueOf(mass[1]);
             topicPerCategory.put(mass[0], Integer.valueOf(mass[1]));
         }
     }

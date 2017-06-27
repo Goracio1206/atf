@@ -2,7 +2,7 @@ package com.tools.atf.test.Test;
 
 import Core.BaseTest;
 import Web.WebPages.AdminPage;
-import Web.WebPages.Categories;
+import Web.WebElements.Categories;
 import Web.WebPages.MainMenu;
 import Web.WebPages.HomePage;
 import org.openqa.selenium.By;

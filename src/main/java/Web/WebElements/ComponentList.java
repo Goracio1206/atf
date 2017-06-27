@@ -13,9 +13,9 @@ public class ComponentList extends WebComponent<ComponentList> {
 
     public List<WebElement> componentList;
 
-    public ComponentList(WebDriver driver, By findByMethod) {
-        super(driver, findByMethod);
-        componentList = driver.findElements(findByMethod);
+    public ComponentList(WebDriver driver, WebElement element) {
+        super(driver, element);
+//        componentList = element;
     }
 
     public List<WebElement> getComponentList(){

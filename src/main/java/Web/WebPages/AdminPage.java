@@ -72,7 +72,7 @@ public class AdminPage extends WebPage<AdminPage> {
     }
 
     public void addNewArticleOnHomePage(String title, String text, String category) {
-        adminLinkAddNewTopc.click();
+        new Link(driver, By.xpath(ADMIN_LINK_ADD_NEW_TOPIC)).click();
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_TOPIC_TITLE)).inputText(title + new Random(System.currentTimeMillis()).nextInt());
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_TOPIC_TEXT)).inputText(text);
         new DropDown(driver, By.xpath(ADMIN_DROPDOWN_NEW_TOPIC_CATEGORY)).selectByVisibleText(category);
