@@ -5,6 +5,9 @@ import Web.WebElements.*;
 import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.Random;
 
@@ -16,9 +19,16 @@ public class AdminPage extends WebPage<AdminPage> {
     /*PAGE*/
     private static final String ADMIN_PAGE = new Environment().BASE_URL + "/snews/administration/";
     /*LINKS*/
-    private static final String ADMIN_LINK_ADD_NEW_TOPIC = ".//*[@id='main']/div[1]/p[3]/a[1]";
-    private static final String ADMIN_LINK_ADD_NEW_CATEGORY = ".//*[@id='main']/div[1]/p[2]/a[1]";
-    private static final String ADMIN_LINK_ADD_NEW_PAGE = ".//*[@id='main']/div[1]/p[4]/a[1]";
+    @FindBy(xpath = ".//*[@id='main']/div[1]/p[3]/a[1]")
+    private WebElement addNewTopicLink;
+
+    @FindBy(xpath = ".//*[@id='main']/div[1]/p[2]/a[1]")
+    private WebElement addNewCategoryLink;
+
+    @FindBy(xpath = ".//*[@id='main']/div[1]/p[4]/a[1]")
+    private WebElement addNewPageLink;
+
+
     private static final String ADMIN_LINK_ADD_NEW_PAGE_CUSTOMIZE_SECTION = ".//*[@id='post']/div[3]/p/a";
     /*INPUTS*/
     private static final String ADMIN_INPUT_NEW_TOPIC_TITLE = ".//*[@id='at']";
@@ -43,6 +53,7 @@ public class AdminPage extends WebPage<AdminPage> {
 
     public AdminPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @Override
@@ -55,8 +66,8 @@ public class AdminPage extends WebPage<AdminPage> {
     public boolean isAvailable() {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
                 driver.findElement(By.xpath(".//*[@class='adminpanel']")).isDisplayed() &&
-                driver.findElement(By.xpath(ADMIN_LINK_ADD_NEW_PAGE)).isDisplayed() &&
-                driver.findElement(By.xpath(ADMIN_LINK_ADD_NEW_CATEGORY)).isDisplayed();
+                addNewPageLink.isDisplayed() &&
+                addNewCategoryLink.isDisplayed();
     }
 
     public void addTheSameTopic(String title, String text, String category) {
@@ -66,7 +77,7 @@ public class AdminPage extends WebPage<AdminPage> {
     }
 
     public void addNewArticleOnHomePage(String title, String text, String category) {
-        new Link(driver, By.xpath(ADMIN_LINK_ADD_NEW_TOPIC)).click();
+        addNewTopicLink.click();
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_TOPIC_TITLE)).inputText(title + new Random(System.currentTimeMillis()).nextInt());
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_TOPIC_TEXT)).inputText(text);
         new DropDown(driver, By.xpath(ADMIN_DROPDOWN_NEW_TOPIC_CATEGORY)).selectByVisibleText(category);
@@ -75,7 +86,7 @@ public class AdminPage extends WebPage<AdminPage> {
     }
 
     public void addNewCategory(String name, String engineFriendly, String description) {
-        new Link(driver, By.xpath(ADMIN_LINK_ADD_NEW_CATEGORY)).click();
+        addNewCategoryLink.click();
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_CATEGORY_NAME)).inputText(name);
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_CATEGORY_SEARCH_ENGINE_FRIENDLY)).inputText(engineFriendly);
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_CATEGORY_DESCRIPTION)).inputText(description);
@@ -83,7 +94,7 @@ public class AdminPage extends WebPage<AdminPage> {
     }
 
     public void addNewPage(String pageName, String searchEngine, String text, boolean comments) {
-        new Link(driver, By.xpath(ADMIN_LINK_ADD_NEW_PAGE)).click();
+        addNewPageLink.click();
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_PAGE_TITLE)).inputText(pageName);
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_PAGE_SEARCH_ENGINE_FRIENDLY)).inputText(pageName);
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_PAGE_TEXT)).inputText(pageName);

@@ -5,6 +5,8 @@ import Web.WebElements.Text;
 import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 
 /**
@@ -13,6 +15,11 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends WebPage<HomePage> {
 
     private static final String MAIN_PAGE = "http://localhost/snews/";
+
+    @FindBy(id = "footer")
+    private WebElement footer;
+
+    private By loginButton = By.xpath(".//*[@id='footer']/p/a[2]");
 
 
     public HomePage(WebDriver driver) {
@@ -28,12 +35,12 @@ public class HomePage extends WebPage<HomePage> {
       @Override
     public boolean isAvailable() {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
-                new Text(driver, By.id("footer")).waitUntilAvailable().isAvailable();
+                new Text(driver, footer).waitUntilAvailable().isAvailable();
 
     }
 
     public LoginPage goToLoginPage() {
-        new Link(driver, By.xpath(".//*[@id='footer']/p/a[2]")).click();
+        new Link(driver, loginButton).click();
         return new LoginPage(driver).waitUntilAvailable();
     }
 

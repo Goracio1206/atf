@@ -6,6 +6,8 @@ import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +16,17 @@ import java.util.List;
  * Created by Admin on 15-May-17.
  */
 public class MainMenu extends WebPage<MainMenu> {
-    private static final String MAIN_MENU = ".//*[@id='topmenu']";
+    By mainPage = By.xpath(".//*[@id='topmenu']");
+    By logOutLink = By.xpath(".//*[@id='footer']/p/a[3]");
 
+    @FindBy(xpath = ".//*[@id='topmenu']/li")
+    private List<WebElement> menuItems;
 
-    public List<WebElement> menuItems;
     public List<String> pages = new ArrayList<>();
 
     public MainMenu(WebDriver driver) {
         super(driver);
-        menuItems = new ComponentList(driver, By.xpath(".//*[@id='topmenu']/li")).getComponentList();
+        PageFactory.initElements(driver, this);
         this.setPages();
     }
 
@@ -34,11 +38,11 @@ public class MainMenu extends WebPage<MainMenu> {
 
     @Override
     public boolean isAvailable() {
-        return driver.findElement(By.xpath(MAIN_MENU)).isDisplayed();
+        return driver.findElement(mainPage).isDisplayed();
     }
 
     public void logOut() {
-        new Link(driver, By.xpath(".//*[@id='footer']/p/a[3]")).click();
+        new Link(driver, logOutLink).click();
     }
 
     public boolean isPagePresent(String pageName) {
@@ -46,7 +50,6 @@ public class MainMenu extends WebPage<MainMenu> {
     }
 
     private void setPages() {
-        String item;
         for (WebElement elem : menuItems) {
             pages.add(elem.getText());
         }
