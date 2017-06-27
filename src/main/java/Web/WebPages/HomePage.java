@@ -36,7 +36,6 @@ public class HomePage extends WebPage<HomePage> {
     public boolean isAvailable() {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
                 new Text(driver, footer).waitUntilAvailable().isAvailable();
-
     }
 
     public LoginPage goToLoginPage() {
@@ -49,13 +48,13 @@ public class HomePage extends WebPage<HomePage> {
     }
 
     public String getFirstTopic() {
-        String topic = null;
+        String topic;
         topic = driver.findElement(By.xpath(".//*[@id='main']/h2[1]/a")).getText();
         return topic;
     }
 
     public String getLatestNewTopic() {
-        String topicTitle = null;
+        String topicTitle;
         topicTitle = driver.findElement(By.xpath(".//*[@id='side']/div[2]/ul[1]/li[1]/a")).getText();
         return topicTitle;
     }
