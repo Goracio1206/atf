@@ -6,6 +6,7 @@ import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by Admin on 15-May-17.
@@ -13,6 +14,9 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends WebPage<LoginPage> {
 
     private static final String LOGIN_PAGE = "http://localhost/snews/login/";
+
+    @FindBy(id = "uname")
+    WebElement userName;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,7 +37,7 @@ public class LoginPage extends WebPage<LoginPage> {
     }
 
     public AdminPage loginAs(String username, String password) {
-        getUsernameInput().inputText(username);
+        userName.sendKeys(username);
         getPasswordInput().inputText(password);
         String capcha = Capchainput();
         getCapchaInput().inputText(capcha);

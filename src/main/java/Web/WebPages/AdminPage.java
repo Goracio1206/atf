@@ -5,6 +5,8 @@ import Web.WebElements.*;
 import Web.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.Random;
 
@@ -16,6 +18,10 @@ public class AdminPage extends WebPage<AdminPage> {
     /*PAGE*/
     private static final String ADMIN_PAGE = new Environment().BASE_URL + "/snews/administration/";
     /*LINKS*/
+
+    @FindBy(xpath = ".//*[@id='main']/div[1]/p[3]/a[1]")
+    WebElement adminLinkAddNewTopc;
+
     private static final String ADMIN_LINK_ADD_NEW_TOPIC = ".//*[@id='main']/div[1]/p[3]/a[1]";
     private static final String ADMIN_LINK_ADD_NEW_CATEGORY = ".//*[@id='main']/div[1]/p[2]/a[1]";
     private static final String ADMIN_LINK_ADD_NEW_PAGE = ".//*[@id='main']/div[1]/p[4]/a[1]";
@@ -66,7 +72,7 @@ public class AdminPage extends WebPage<AdminPage> {
     }
 
     public void addNewArticleOnHomePage(String title, String text, String category) {
-        new Link(driver, By.xpath(ADMIN_LINK_ADD_NEW_TOPIC)).click();
+        adminLinkAddNewTopc.click();
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_TOPIC_TITLE)).inputText(title + new Random(System.currentTimeMillis()).nextInt());
         new TextInput(driver, By.xpath(ADMIN_INPUT_NEW_TOPIC_TEXT)).inputText(text);
         new DropDown(driver, By.xpath(ADMIN_DROPDOWN_NEW_TOPIC_CATEGORY)).selectByVisibleText(category);
