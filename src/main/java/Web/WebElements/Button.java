@@ -10,13 +10,12 @@ import org.openqa.selenium.WebElement;
  */
 public class Button extends WebComponent<Button> {
 
-    public Button(WebDriver driver, WebElement element) {
-        super(driver, element);
+    public Button(WebDriver driver, By findByMethod) {
+        super(driver, findByMethod);
     }
 
-    public Button(WebDriver driver, By findByMthod) {
-        super(driver, findByMthod);
-
+    public void pressButton() {
+        click();
     }
 
 

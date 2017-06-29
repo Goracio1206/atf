@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class Categories extends WebComponent<Categories> {
     //TODO: Need to add xPath for Category List
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='side']/div[1]/ul[1]/li")
     public List<WebElement> categoriesItems;
     public Map<String, Integer> topicPerCategory = new HashMap<String, Integer>();
 

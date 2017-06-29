@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 
 /**
@@ -16,14 +17,16 @@ public class HomePage extends WebPage<HomePage> {
 
     private static final String MAIN_PAGE = "http://localhost/snews/";
 
-    @FindBy(id = "footer")
-    private WebElement footer;
+//    @FindBy(id = "footer")
+//    private WebElement footer;
 
-    private By loginButton = By.xpath(".//*[@id='footer']/p/a[2]");
+    private static By loginButton = By.xpath(".//*[@id='footer']/p/a[2]");
+    private static By footer = By.id("footer");
 
 
     public HomePage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @Override
@@ -44,7 +47,7 @@ public class HomePage extends WebPage<HomePage> {
     }
 
     public HomePage goToHomePage() {
-        return new HomePage(driver).load();
+        return new HomePage(driver).loadAndWaitUntilAvailable();
     }
 
     public String getFirstTopic() {

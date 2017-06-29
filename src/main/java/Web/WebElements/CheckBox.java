@@ -10,15 +10,11 @@ import org.openqa.selenium.WebElement;
  */
 public class CheckBox extends WebComponent<CheckBox> {
 
-    protected WebElement element;
+    WebElement element = null;
 
-    public CheckBox(WebDriver driver, WebElement element) {
-        super(driver, element);
-        this.element = element;
-    }
-
-    public CheckBox(WebDriver driver, By findByMethod){
+    public CheckBox(WebDriver driver, By findByMethod) {
         super(driver, findByMethod);
+        element = driver.findElement(findByMethod);
     }
 
     public void check(){

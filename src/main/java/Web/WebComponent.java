@@ -8,36 +8,30 @@ import org.openqa.selenium.WebElement;
 
 public abstract class WebComponent<T extends WebComponent<T>> extends Component<T> {
 
-    protected WebElement webElement;
+    protected final By findByMethod;
 
-
-    public WebComponent(WebDriver driver, WebElement webElement) {
+    public WebComponent(WebDriver driver, By findByMethod) {
         super(driver);
-        this.webElement = webElement;
-    }
-
-    public WebComponent(WebDriver driver, By findByMethod){
-        super(driver);
-        this.webElement = getWebElement(findByMethod);
+        this.findByMethod = findByMethod;
     }
     @Override
     public boolean isAvailable(){
         try {
-        return this.webElement != null;
+        return getWebElement() != null;
         } catch (NoSuchElementException e){
             return false;
         }
     }
 
     public void click(){
-        this.webElement.click();
+        getWebElement().click();
     }
 
     public String getText(){
-        return this.webElement.getText();
+        return getWebElement().getText();
     }
 
-    protected WebElement getWebElement(By findByMethod){
+    protected WebElement getWebElement(){
         return driver.findElement(findByMethod);
     }
 
