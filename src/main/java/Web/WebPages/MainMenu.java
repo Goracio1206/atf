@@ -16,11 +16,12 @@ import java.util.List;
  * Created by Admin on 15-May-17.
  */
 public class MainMenu extends WebPage<MainMenu> {
-    By mainPage = By.xpath(".//*[@id='topmenu']");
-    By logOutLink = By.xpath(".//*[@id='footer']/p/a[3]");
 
     @FindBy(xpath = ".//*[@id='topmenu']/li")
     private List<WebElement> menuItems;
+
+    private static By mainPage = By.xpath(".//*[@id='topmenu']");
+    private static By logOutLink = By.xpath(".//*[@id='footer']/p/a[3]");
 
     public List<String> pages = new ArrayList<>();
 

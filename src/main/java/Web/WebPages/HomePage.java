@@ -22,7 +22,9 @@ public class HomePage extends WebPage<HomePage> {
 
     private static By loginButton = By.xpath(".//*[@id='footer']/p/a[2]");
     private static By footer = By.id("footer");
-
+    private static By FIRST_TOPIC_IN_THE_PAGE = By.xpath(".//*[@id='main']/h2[1]/a");
+    private static By FIRST_TOPIC_IN_THE_SIDE_BAR = By.xpath(".//*[@id='side']/div[2]/ul[1]/li[1]/a");
+    private static By USER_NAME = By.xpath(".//*[@id='footer']/p/a[2]");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -52,18 +54,18 @@ public class HomePage extends WebPage<HomePage> {
 
     public String getFirstTopic() {
         String topic;
-        topic = driver.findElement(By.xpath(".//*[@id='main']/h2[1]/a")).getText();
+        topic = driver.findElement(FIRST_TOPIC_IN_THE_PAGE).getText();
         return topic;
     }
 
     public String getLatestNewTopic() {
         String topicTitle;
-        topicTitle = driver.findElement(By.xpath(".//*[@id='side']/div[2]/ul[1]/li[1]/a")).getText();
+        topicTitle = driver.findElement(FIRST_TOPIC_IN_THE_SIDE_BAR).getText();
         return topicTitle;
     }
 
     public String getUserName() {
-        return driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]")).getText();
+        return driver.findElement(USER_NAME).getText();
     }
 
 }

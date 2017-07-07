@@ -19,6 +19,21 @@ public class LoginPage extends WebPage<LoginPage> {
     @FindBy(id = "uname")
     WebElement userName;
 
+    @FindBy(id = "pass")
+    WebElement userPassword;
+
+    @FindBy(id = "calc")
+    WebElement capchaInput;
+
+    @FindBy(id = "submit")
+    WebElement submitButton;
+
+    private static By USER_NAME_INPUT = By.id("uname");
+    private static By USER_PASSWORD_INPUT = By.id("pass");
+    private static By USER_CAPCHA_INPUT = By.id("calc");
+    private static By SUBMIT_BUTTON = By.id("submit");
+    private static By CAPCHA_TEXT = By.xpath(".//*[@id='post']/p[4]");
+
     public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -40,33 +55,33 @@ public class LoginPage extends WebPage<LoginPage> {
 
     public AdminPage loginAs(String username, String password) {
         userName.sendKeys(username);
-        getPasswordInput().inputText(password);
+        userPassword.sendKeys(password);
         String capcha = Capchainput();
-        getCapchaInput().inputText(capcha);
-        getLoginButton().click();
+        capchaInput.sendKeys(capcha);
+        submitButton.click();
         return new AdminPage(driver);
     }
 
     private TextInput getUsernameInput() {
-        return new TextInput(driver, By.id("uname"));
+        return new TextInput(driver, USER_NAME_INPUT);
     }
 
     private TextInput getPasswordInput() {
 
-        return new TextInput(driver, By.id("pass"));
+        return new TextInput(driver, USER_PASSWORD_INPUT);
     }
 
     private TextInput getCapchaInput() {
-        return new TextInput(driver, By.id("calc"));
+        return new TextInput(driver, USER_CAPCHA_INPUT);
     }
 
     private Button getLoginButton() {
-        return new Button(driver, By.id("submit"));
+        return new Button(driver, SUBMIT_BUTTON);
     }
 
     private String Capchainput() {
         String result = null;
-        WebElement elemnt = driver.findElement(By.xpath(".//*[@id='post']/p[4]"));
+        WebElement elemnt = driver.findElement(CAPCHA_TEXT);
         String expression = elemnt.getText();
         char splitedExpression[] = expression.toCharArray();
         int a = Integer.valueOf(String.valueOf(splitedExpression[splitedExpression.length - 3]));

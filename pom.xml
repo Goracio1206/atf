@@ -81,7 +81,6 @@
                 <configuration>
                     <systemPropertyVariables>
                         <browser>${browser}</browser>
-                        <!-- <baseurl>${baseurl}</baseurl>-->
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
