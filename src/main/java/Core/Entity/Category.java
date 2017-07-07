@@ -13,6 +13,8 @@ public class Category {
     private int catorder;
     private int subcat;
 
+    public Category(){}
+
     public Category(int id, String name, String selftitle, String description, boolean publisdhed, int catorder, int subcat) {
         this.id = id;
         this.name = name;

@@ -8,12 +8,12 @@ import java.util.Calendar;
 public class Article {
     private int id;
     private String title;
-    private String selftitle;
+    private String seftitle;
     private String text;
-    private Calendar date;
+    private String date;
     private int category;
     private int position;
-    private String extradid;
+    private String extraid;
     private String page_extra;
     private boolean displaytitle;
     private boolean displayinfo;
@@ -24,18 +24,46 @@ public class Article {
     private boolean show_on_home;
     private boolean show_in_subcats;
     private int artorder;
-    private boolean visibdle;
+    private boolean visible;
     private boolean default_page;
 
-    public Article(int id, String title, String selftitle, String text, Calendar date, int category, int position, String extradid, String page_extra, boolean displaytitle, boolean displayinfo, boolean commentable, int published, String description_meta, String keyword_meta, boolean show_on_home, boolean show_in_subcats, int artorder, boolean visibdle, boolean default_page) {
+    public Article(){}
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", seftitle='" + seftitle + '\'' +
+                ", text='" + text + '\'' +
+                ", date='" + date + '\'' +
+                ", category=" + category +
+                ", position=" + position +
+                ", extraid='" + extraid + '\'' +
+                ", page_extra='" + page_extra + '\'' +
+                ", displaytitle=" + displaytitle +
+                ", displayinfo=" + displayinfo +
+                ", commentable=" + commentable +
+                ", published=" + published +
+                ", description_meta='" + description_meta + '\'' +
+                ", keyword_meta='" + keyword_meta + '\'' +
+                ", show_on_home=" + show_on_home +
+                ", show_in_subcats=" + show_in_subcats +
+                ", artorder=" + artorder +
+                ", visible=" + visible +
+                ", default_page=" + default_page +
+                '}';
+    }
+
+    public Article(int id, String title, String seftitle, String text, String date, int category, int position, String extradid, String page_extra, boolean displaytitle, boolean displayinfo, boolean commentable, int published, String description_meta, String keyword_meta, boolean show_on_home, boolean show_in_subcats, int artorder, boolean visibdle, boolean default_page) {
         this.id = id;
         this.title = title;
-        this.selftitle = selftitle;
+        this.seftitle = seftitle;
         this.text = text;
         this.date = date;
         this.category = category;
         this.position = position;
-        this.extradid = extradid;
+        this.extraid = extradid;
         this.page_extra = page_extra;
         this.displaytitle = displaytitle;
         this.displayinfo = displayinfo;
@@ -46,7 +74,7 @@ public class Article {
         this.show_on_home = show_on_home;
         this.show_in_subcats = show_in_subcats;
         this.artorder = artorder;
-        this.visibdle = visibdle;
+        this.visible = visibdle;
         this.default_page = default_page;
     }
 
@@ -58,15 +86,15 @@ public class Article {
         return title;
     }
 
-    public String getSelftitle() {
-        return selftitle;
+    public String getSeftitle() {
+        return seftitle;
     }
 
     public String getText() {
         return text;
     }
 
-    public Calendar getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -79,7 +107,7 @@ public class Article {
     }
 
     public String getExtradid() {
-        return extradid;
+        return extraid;
     }
 
     public String getPage_extra() {
@@ -123,7 +151,7 @@ public class Article {
     }
 
     public boolean isVisibdle() {
-        return visibdle;
+        return visible;
     }
 
     public boolean isDefault_page() {

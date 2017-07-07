@@ -1,4 +1,4 @@
-package Core;
+package Core.DB;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.Connection;
@@ -8,10 +8,10 @@ import java.sql.SQLException;
 /**
  * Created by Admin on 20-Jun-17.
  */
-public class DBConector {
+public class DBConnector {
     private Connection connection;
 
-    public DBConector() throws SQLException {
+    public DBConnector() throws SQLException {
         DriverManager.registerDriver(new FabricMySQLDriver());
     }
 
