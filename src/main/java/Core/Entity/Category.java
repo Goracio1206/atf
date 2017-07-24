@@ -7,20 +7,20 @@ public class Category {
 
     private int id;
     private String name;
-    private String selftitle;
+    private String seftitle;
     private String description;
-    private boolean publisdhed;
+    private boolean published;
     private int catorder;
     private int subcat;
 
     public Category(){}
 
-    public Category(int id, String name, String selftitle, String description, boolean publisdhed, int catorder, int subcat) {
+    public Category(int id, String name, String selftitle, String description, boolean published, int catorder, int subcat) {
         this.id = id;
         this.name = name;
-        this.selftitle = selftitle;
+        this.seftitle = selftitle;
         this.description = description;
-        this.publisdhed = publisdhed;
+        this.published = published;
         this.catorder = catorder;
         this.subcat = subcat;
     }
@@ -33,16 +33,16 @@ public class Category {
         return name;
     }
 
-    public String getSelftitle() {
-        return selftitle;
+    public String getSeftitle() {
+        return seftitle;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public boolean isPublisdhed() {
-        return publisdhed;
+    public boolean isPublished() {
+        return published;
     }
 
     public int getCatorder() {
@@ -51,5 +51,18 @@ public class Category {
 
     public int getSubcat() {
         return subcat;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", selftitle='" + seftitle + '\'' +
+                ", description='" + description + '\'' +
+                ", published=" + published +
+                ", catorder=" + catorder +
+                ", subcat=" + subcat +
+                '}';
     }
 }

@@ -1,7 +1,5 @@
 package Core.Entity;
 
-import java.util.Calendar;
-
 /**
  * Created by Admin on 07-Jul-17.
  */
@@ -20,7 +18,7 @@ public class Article {
     private boolean commentable;
     private int published;
     private String description_meta;
-    private String keyword_meta;
+    private String keywords_meta;
     private boolean show_on_home;
     private boolean show_in_subcats;
     private int artorder;
@@ -46,7 +44,7 @@ public class Article {
                 ", commentable=" + commentable +
                 ", published=" + published +
                 ", description_meta='" + description_meta + '\'' +
-                ", keyword_meta='" + keyword_meta + '\'' +
+                ", keywords_meta='" + keywords_meta + '\'' +
                 ", show_on_home=" + show_on_home +
                 ", show_in_subcats=" + show_in_subcats +
                 ", artorder=" + artorder +
@@ -70,7 +68,7 @@ public class Article {
         this.commentable = commentable;
         this.published = published;
         this.description_meta = description_meta;
-        this.keyword_meta = keyword_meta;
+        this.keywords_meta = keyword_meta;
         this.show_on_home = show_on_home;
         this.show_in_subcats = show_in_subcats;
         this.artorder = artorder;
@@ -134,8 +132,8 @@ public class Article {
         return description_meta;
     }
 
-    public String getKeyword_meta() {
-        return keyword_meta;
+    public String getKeywords_meta() {
+        return keywords_meta;
     }
 
     public boolean isShow_on_home() {

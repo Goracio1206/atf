@@ -31,8 +31,7 @@ public class BaseTest {
      */
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
-    public void setUp(String browser) {
-        //new Environment().setEnvironment(baseURL);
+    public void setUp(@Optional("chrome") String browser) {
         driver = DriverMaster.getDriver(browser);
         driver.manage().window().maximize();
     }

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="test" parallel="true" thread-count="2">
+    <test name="mytest">
+        <parameter name="browser" value="chrome"/>
+        <packages>
+            <package name="com.tools.atf.test.Test"/>
+        </packages>
+    </test>
+
+
+    <!--<test name="mytest1">-->
+        <!--<parameter name="browser" value="firefox"/>-->
+        <!--<packages>-->
+            <!--<package name="com.tools.atf.test.Test"/>-->
+        <!--</packages>-->
+    <!--</test>-->
+</suite>

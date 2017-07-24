@@ -14,7 +14,6 @@ import static Core.TestData.*;
 
 public class AddNewCategory extends BaseTest {
 
-
     @Test(alwaysRun = true)
     public void addNewCategory() {
         String categoryName = "testr9";
