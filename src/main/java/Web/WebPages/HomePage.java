@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 /**
  * Created by Admin on 15-May-17.
@@ -19,6 +21,12 @@ public class HomePage extends WebPage<HomePage> {
 
 //    @FindBy(id = "footer")
 //    private WebElement footer;
+
+    @FindBy(xpath = ".//*[@id='keywords']")
+    private WebElement searchBox;
+
+    @FindBy(xpath = ".//*[@id='search_engine']/p/input[2]")
+    private WebElement searchButton;
 
     private static By loginButton = By.xpath(".//*[@id='footer']/p/a[2]");
     private static By footer = By.id("footer");
@@ -37,7 +45,7 @@ public class HomePage extends WebPage<HomePage> {
         return this;
     }
 
-      @Override
+    @Override
     public boolean isAvailable() {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
                 new Text(driver, footer).waitUntilAvailable().isAvailable();
@@ -66,6 +74,22 @@ public class HomePage extends WebPage<HomePage> {
 
     public String getUserName() {
         return driver.findElement(USER_NAME).getText();
+    }
+
+    public void findTopicByNameAndOpen(String name) throws InterruptedException {
+        searchBox.clear();
+        searchBox.sendKeys(name);
+        searchButton.isDisplayed();
+        searchButton.click();
+        //Thread.sleep(2000);
+        List<WebElement> topics = driver.findElements(By.xpath(".//*[@id='main']/p/a"));
+        for (WebElement elem : topics) {
+            if (elem.getText().contains(name)) {
+                elem.click();
+                break;
+            }
+        }
+       // Thread.sleep(2000);
     }
 
 }

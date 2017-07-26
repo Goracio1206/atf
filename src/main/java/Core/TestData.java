@@ -21,4 +21,8 @@ public class TestData {
 
     /*MAIN PAGE*/
     public static final String CATEGORIES_SECTION = ".//*[@id='side']/div[1]/ul[1]/li";
+
+
+    /*TOPICS NAME*/
+    public static final String TOPIC_NAME_Vitalii1_1508637454 = "Vitalii1-1508637454";
 }

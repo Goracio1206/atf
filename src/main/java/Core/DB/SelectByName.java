@@ -116,8 +116,6 @@ public class SelectByName {
         statement.close();
         connection.close();
 
-        System.out.println(article);
-
         return article;
     }
 
