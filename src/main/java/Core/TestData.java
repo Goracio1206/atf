@@ -24,5 +24,5 @@ public class TestData {
 
 
     /*TOPICS NAME*/
-    public static final String TOPIC_NAME_Vitalii1_1508637454 = "Vitalii1-1508637454";
+    public static final String TOPIC_NAME_Vitalii1_1508637454 = "Welcome to sNews 1.7";
 }

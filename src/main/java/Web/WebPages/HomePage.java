@@ -3,6 +3,7 @@ package Web.WebPages;
 import Web.WebElements.Link;
 import Web.WebElements.Text;
 import Web.WebPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,6 +77,7 @@ public class HomePage extends WebPage<HomePage> {
         return driver.findElement(USER_NAME).getText();
     }
 
+    @Step
     public void findTopicByNameAndOpen(String name) throws InterruptedException {
         searchBox.clear();
         searchBox.sendKeys(name);

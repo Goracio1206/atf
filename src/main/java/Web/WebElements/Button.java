@@ -14,11 +14,6 @@ public class Button extends WebComponent<Button> {
         super(driver, findByMethod);
     }
 
-    @Override
-    public boolean isAvailable(){
-        return this.isAvailable();
-    }
-
     public void pressButton() {
         click();
     }

@@ -6,7 +6,7 @@
 
     <groupId>com.vitalii</groupId>
     <artifactId>atf</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT1</version>
     <name>atf</name>
     <description>This is atf framework</description>
     <properties>
@@ -20,51 +20,77 @@
         <mysql.version>5.1.42</mysql.version>
         <mavenCompilerPlugin.version>3.6.1</mavenCompilerPlugin.version>
         <mavenShurefirePlugin.version>2.18.1</mavenShurefirePlugin.version>
+        <allure.version>2.0-BETA14</allure.version>
+        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
+    <parent>
+        <groupId>ru.yandex.qatools.allure</groupId>
+        <artifactId>allure-examples-parent</artifactId>
+        <version>1.0</version>
+    </parent>
 
     <dependencies>
+        <!--Hamcrest assertions-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
-
+        <!--TestNg-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testNG.version}</version>
         </dependency>
-
+        <!--Selenium Server-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
             <version>${selenium.version}</version>
         </dependency>
-
+        <!--Selenium Java-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.JavaVersion}</version>
         </dependency>
-
+        <!--Chrome Driver-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
             <version>${chromeDriver.version}</version>
         </dependency>
-
+        <!--FF Driver-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>${firefoxDriver.version}</version>
         </dependency>
-
+        <!--MySQL connector-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+        <!--Allure Reporting-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.0-BETA16</version>
         </dependency>
 
     </dependencies>
@@ -85,6 +111,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${mavenShurefirePlugin.version}</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/java/com/tools/atf/test/Test/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -92,9 +122,26 @@
                         <browser>${browser}</browser>
                     </systemPropertyVariables>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
 
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.8</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
