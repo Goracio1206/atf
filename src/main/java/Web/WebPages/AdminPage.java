@@ -3,6 +3,7 @@ package Web.WebPages;
 import Core.Environment;
 import Web.WebElements.*;
 import Web.WebPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -67,12 +68,14 @@ public class AdminPage extends WebPage<AdminPage> {
                 driver.findElement(ADMIN_LINK_ADD_NEW_CATEGORY).isDisplayed();
     }
 
+    @Step("Add two the same topics with title={title}, text={text}, category={category}")
     public void addTheSameTopic(String title, String text, String category) {
         new AdminPage(driver).load().waitUntilAvailable().addNewArticleOnHomePage(title, text, category);
         new AdminPage(driver).load().waitUntilAvailable().addNewArticleOnHomePage(title, text, category);
 
     }
 
+    @Step("Add topic with title={title}, text={text}, category={category} and show in Home page")
     public void addNewArticleOnHomePage(String title, String text, String category) {
         new Link(driver, ADMIN_LINK_ADD_NEW_TOPIC).click();
         new TextInput(driver, ADMIN_INPUT_NEW_TOPIC_TITLE).inputText(title + new Random(System.currentTimeMillis()).nextInt());
@@ -82,6 +85,7 @@ public class AdminPage extends WebPage<AdminPage> {
         new Button(driver, ADMIN_BUTTON_NEW_TOPIC_SUBMIT).click();
     }
 
+    @Step("Add new category with name={name}, engineFrienly={engineFriendly}, description={description}.")
     public void addNewCategory(String name, String engineFriendly, String description) {
         new Link(driver, ADMIN_LINK_ADD_NEW_CATEGORY).click();
         new TextInput(driver, ADMIN_INPUT_NEW_CATEGORY_NAME).inputText(name);
@@ -89,7 +93,7 @@ public class AdminPage extends WebPage<AdminPage> {
         new TextInput(driver, ADMIN_INPUT_NEW_CATEGORY_DESCRIPTION).inputText(description);
         new Button(driver, ADMIN_BUTTON_NEW_CATEGORY_SUBMIT).click();
     }
-
+    @Step("Add new page {pageName} to top menu.")
     public void addNewPage(String pageName, String searchEngine, String text, boolean comments) {
         new Link(driver, ADMIN_LINK_ADD_NEW_PAGE).click();
         new TextInput(driver, ADMIN_INPUT_NEW_PAGE_TITLE).inputText(pageName);
