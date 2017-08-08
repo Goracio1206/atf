@@ -2,6 +2,7 @@ package Core;
 
 import Web.WebPages.MainMenu;
 import Web.WebPages.HomePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,7 @@ public class BaseTest {
      */
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
+    @Step("Run {browser} browser!")
     public void setUp(@Optional("chrome") String browser) {
         driver = DriverMaster.getDriver(browser);
         driver.manage().window().maximize();
@@ -51,6 +53,7 @@ public class BaseTest {
      * This will be executed after all suite to close the browser execution end.
      */
     @AfterClass(alwaysRun = true)
+    @Step("Log out and close browser.")
     public void tearDown() {
         new HomePage(driver).loadAndWaitUntilAvailable();
         WebElement element = driver.findElement(By.xpath(".//*[@id='footer']/p/a[2]"));

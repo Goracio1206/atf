@@ -3,6 +3,7 @@ package com.tools.atf.test.Regression;
 import Core.BaseTest;
 import Web.WebElements.Link;
 import Web.WebPages.HomePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;

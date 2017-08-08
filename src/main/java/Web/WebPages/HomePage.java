@@ -51,12 +51,12 @@ public class HomePage extends WebPage<HomePage> {
         return new MainMenu(driver).waitUntilAvailable().isAvailable() &&
                 new Text(driver, footer).waitUntilAvailable().isAvailable();
     }
-
+    @Step("Open Login page.")
     public LoginPage goToLoginPage() {
         new Link(driver, loginButton).click();
         return new LoginPage(driver).waitUntilAvailable();
     }
-
+    @Step("Open home page.")
     public HomePage goToHomePage() {
         return new HomePage(driver).loadAndWaitUntilAvailable();
     }
@@ -66,7 +66,7 @@ public class HomePage extends WebPage<HomePage> {
         topic = driver.findElement(FIRST_TOPIC_IN_THE_PAGE).getText();
         return topic;
     }
-
+    @Step("Open first topic in the Home page")
     public String getLatestNewTopic() {
         String topicTitle;
         topicTitle = driver.findElement(FIRST_TOPIC_IN_THE_SIDE_BAR).getText();
@@ -77,7 +77,7 @@ public class HomePage extends WebPage<HomePage> {
         return driver.findElement(USER_NAME).getText();
     }
 
-    @Step
+    @Step("Search for \"{name}\" topic and open it.")
     public void findTopicByNameAndOpen(String name) throws InterruptedException {
         searchBox.clear();
         searchBox.sendKeys(name);
