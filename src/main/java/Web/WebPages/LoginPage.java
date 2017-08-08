@@ -3,6 +3,7 @@ package Web.WebPages;
 import Web.WebElements.Button;
 import Web.WebElements.TextInput;
 import Web.WebPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,6 +41,7 @@ public class LoginPage extends WebPage<LoginPage> {
     }
 
     @Override
+    @Step("Load Login page.")
     public LoginPage load() {
         driver.get(LOGIN_PAGE);
         return this;
@@ -53,6 +55,7 @@ public class LoginPage extends WebPage<LoginPage> {
                 getLoginButton().waitUntilAvailable().isAvailable();
     }
 
+    @Step("Login with user_name={username} and password={password}.")
     public AdminPage loginAs(String username, String password) {
         userName.sendKeys(username);
         userPassword.sendKeys(password);
