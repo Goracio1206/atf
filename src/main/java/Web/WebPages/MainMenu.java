@@ -3,6 +3,7 @@ package Web.WebPages;
 import Web.WebElements.ComponentList;
 import Web.WebElements.Link;
 import Web.WebPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,10 +43,11 @@ public class MainMenu extends WebPage<MainMenu> {
         return driver.findElement(mainPage).isDisplayed();
     }
 
+    @Step("Log out")
     public void logOut() {
         new Link(driver, logOutLink).click();
     }
-
+    @Step("Check if {pageName} present")
     public boolean isPagePresent(String pageName) {
        return pages.contains(pageName);
     }
