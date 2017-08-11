@@ -1,5 +1,5 @@
 id: custom-logo
 name: Custom logo aggregator
-descrition: The aggregator replacedefault Allure logo with a custom one
+description: The aggregator replacedefault Allure logo with a custom one
 cssFiles:
     -style.css
