@@ -6,5 +6,5 @@ log/
 
 # Intellij
 .idea/
-*.iml
+atf.iml
 *.iws

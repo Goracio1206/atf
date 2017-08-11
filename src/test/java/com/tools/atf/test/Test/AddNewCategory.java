@@ -8,13 +8,15 @@ import Web.WebPages.HomePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Title;
 
 import static Core.TestData.*;
 
-
+@Description("Category functionality")
 public class AddNewCategory extends BaseTest {
 
-    @Test(alwaysRun = true)
+    @Test(alwaysRun = true, description = "Add Category TC")
     public void addNewCategory() {
         String categoryName = "testr9";
         new HomePage(driver).loadAndWaitUntilAvailable().goToLoginPage().loginAs(ADMIN_USER_NAME, ADMIN_USER_PASS);
